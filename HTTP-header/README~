@@ -1,0 +1,10 @@
+httpsmall.c : 
+	for single client-server connection only
+
+httpMultiple.c :
+	Can accept many client requests at a time with multi-processing(not multithreading)
+	
+
+for both the programs give an command line argument as the port number on which the server has to be started.
+
+--The output is displayed on the terminal only after the request from browser(in the URL write, localhost:<port> and hit <enter>)

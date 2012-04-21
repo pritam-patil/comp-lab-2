@@ -1,0 +1,20 @@
+<----In PYTHON..Not in C..continue at your own risk.. :) --->
+
+=====Remember : It's one-on-one chat ====
+
+How to run ?
+
+(on terminal)
+step 1:
+	python chatPipeServer.py
+	--It will wait for text from client
+	--once received, server can send text
+	
+step 2:
+	python chatPipeClient.py
+	--It will prompt for text
+	--After inputting, wait for servers message
+	
+how to stop ?
+	--both sides need to say 'bye' :P
+	--the programs will terminate

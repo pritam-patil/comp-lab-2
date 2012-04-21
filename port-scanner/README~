@@ -1,0 +1,18 @@
+<It's also in PYTHON..continue at your own risk :) >
+
+--portscan.py is a single process, single threaded application
+--portscanThread.py is single process, multi-threaded .....
+
+how to run ?
+
+python <filename>.py <IP address> or <hostname>
+
+(for both the files)
+---It will list out all the open ports with the address of each port. 
+---for more information about, why the port is open run 'cat /etc/services'
+
+
+
+
+
+==================HAPPY PROGRAMMING :) =====================

@@ -1,0 +1,22 @@
+How to run ?
+(on the terminal)
+step 1:
+	rpcgen sorting.x
+	--it will create, sorting_clnt.c, sorting_svr.c, sorting.h and sorting_xdr.c
+	
+step 2:
+	gcc server.c sorting_svr.c sorting_xdr.c -o server
+	--executable file <server> is created
+	
+step 3:
+	gcc client.c sorting_clnt.c sorting_xdr.c -o client
+	--executable <client> is created
+	
+final step :
+	run server as :
+		./server
+		
+	run client as :
+		./client 127.0.0.1 3 4 2 1 5 -1	
+		--the 1st arg is the IP address of server and numbers following need to be sorted
+		--output will be the sorted elements in ascending order
