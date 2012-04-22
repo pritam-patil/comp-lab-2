@@ -1,0 +1,16 @@
+===Shared memory concept=====
+
+How to run ?
+step 1:
+	gcc sharedserver.c -o server
+	gcc sharedclient.c -o client
+	
+step 2:
+	./server
+	./client  (on diff terminal)
+	
+output :
+	server writes char's [a-z] to shared memory
+	and client reads those char's from the same memory
+	
+	---You can see the shared segments using command <ipcs -m> with your segment with key : 5678 in hex
