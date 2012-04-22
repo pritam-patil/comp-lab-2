@@ -1,0 +1,24 @@
+====Search file on server using RPC=====
+
+Requirements :
+	1. rpcgen
+	2. rpcbind
+	3. portmap
+
+
+HOw to run ?
+
+step 1 :
+	rpcgen search.h
+
+step 2:
+	gcc serevr.c search_svr.c search_xdr.c -o server
+	gcc client.c search_svr.c search_xhd.c -o client
+	
+step 3:
+	sudo ./server
+	
+step 4:(on separate window)
+	./client <IP> <filename>
+	e.g. ./client 127.0.0.1 search.x
+	

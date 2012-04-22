@@ -1,0 +1,21 @@
+==Quick sort using RPC===
+
+Requirements :
+	1. rpcgen
+	2. rpcbind
+	3. portmap
+
+how to run ?
+
+Step 1:
+	rpcgen sorting.x
+
+step 2:
+	gcc server.c sorting_svr.c sorting_xdr.c -o server
+	gcc client.c sorting_clnt.c sorting_xdr.c -o client
+	
+step 3:
+	sudo ./server
+	
+step 4:
+	
