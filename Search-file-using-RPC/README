@@ -19,6 +19,7 @@ step 3:
 	sudo ./server
 	
 step 4:(on separate window)
-	./client <IP> <filename>
-	e.g. ./client 127.0.0.1 search.x
+	./client <IP> <filepath>
+	e.g. ./client 127.0.0.1 search.x	//will search in current dir
+	e.g. ./client 127.0.0.1 /home/pritam/check.c	//search filesystem
 	
