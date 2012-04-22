@@ -1,7 +1,7 @@
 #include "sorting.h"
 #include<stdlib.h>
 
-void prog_sort_1(char *host,Array unsorted)
+void prog_sort_1(char *host,Array *input)
 {
 	CLIENT *c;
 	int i;
@@ -9,28 +9,25 @@ void prog_sort_1(char *host,Array unsorted)
 	c=clnt_create(host,PROG_SORT,VER_SORT,"udp");
 	if(c==NULL)
 		exit(1);
-	
-	status=sort_1(&unsorted,c);
+
+	input=sort_1(input,c);
 	clnt_destroy(c);
-	if(*status)
-	{
-		printf("Sorted array :");
-		for(i=0;i<unsorted.size;i++)
-			printf("\t %d ",unsorted.num[i]);
-	}
-	else
-		printf("Error in RPC");
+	
+	printf("Sorted array :");
+	for(i=0;i<input->size;i++)
+		printf("\t %d ",input->num[i]);
+	
 }	
 
 int main(int argc,char *argv[])
 {
 	int i;
 	char *host=argv[1];
-	Array unsorted;
-	unsorted.size=argc-2;
-	for(i=0;i<unsorted.size;i++)
-		unsorted.num[i]=atoi(argv[i+2]);
-		
-	prog_sort_1(host,unsorted);
+	Array input;
+	input.size=argc-2;
+	for(i=0;i<input.size;i++)
+		input.num[i]=atoi(argv[i+2]);
+
+	prog_sort_1(host,&input);
 	return 0;
 }
