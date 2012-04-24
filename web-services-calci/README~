@@ -13,7 +13,7 @@ step 1:
 step 2:
 	---server code linking and compiling
 	
-	gcc -o service calc.cpp soapC.cpp soapServer.cpp -lgsoap++
+	g++ -o service calc.cpp soapC.cpp soapServer.cpp -lgsoap++
 	
 	--service is the executable--server running on port 8000
 	--Run the server as
@@ -23,7 +23,7 @@ step 3:
 	--client seeking for services of calculator
 	
 	--compile and link using creating <client> as executable
-	gcc -o client client.cpp soapC.cpp soapClient.cpp -lgsoap++
+	g++ -o client client.cpp soapC.cpp soapClient.cpp -lgsoap++
 	
 	--run the client as :
 	
