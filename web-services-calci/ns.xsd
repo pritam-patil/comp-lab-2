@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <schema targetNamespace="urn:calc"
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:ns="urn:calc"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="unqualified"
+  attributeFormDefault="unqualified">
+  <import namespace="http://schemas.xmlsoap.org/soap/encoding/" schemaLocation="http://schemas.xmlsoap.org/soap/encoding/"/>
+  <!-- operation request element -->
+  <element name="add">
+   <complexType>
+    <sequence>
+     <element name="a" type="xsd:double" minOccurs="1" maxOccurs="1"/><!-- ns__add::a -->
+     <element name="b" type="xsd:double" minOccurs="1" maxOccurs="1"/><!-- ns__add::b -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="addResponse">
+   <complexType>
+    <sequence>
+     <element name="result" type="xsd:double" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__add::result -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="sub">
+   <complexType>
+    <sequence>
+     <element name="a" type="xsd:double" minOccurs="1" maxOccurs="1"/><!-- ns__sub::a -->
+     <element name="b" type="xsd:double" minOccurs="1" maxOccurs="1"/><!-- ns__sub::b -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="subResponse">
+   <complexType>
+    <sequence>
+     <element name="result" type="xsd:double" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__sub::result -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="mul">
+   <complexType>
+    <sequence>
+     <element name="a" type="xsd:double" minOccurs="1" maxOccurs="1"/><!-- ns__mul::a -->
+     <element name="b" type="xsd:double" minOccurs="1" maxOccurs="1"/><!-- ns__mul::b -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="mulResponse">
+   <complexType>
+    <sequence>
+     <element name="result" type="xsd:double" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__mul::result -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="div">
+   <complexType>
+    <sequence>
+     <element name="a" type="xsd:double" minOccurs="1" maxOccurs="1"/><!-- ns__div::a -->
+     <element name="b" type="xsd:double" minOccurs="1" maxOccurs="1"/><!-- ns__div::b -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="divResponse">
+   <complexType>
+    <sequence>
+     <element name="result" type="xsd:double" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__div::result -->
+    </sequence>
+   </complexType>
+  </element>
+ </schema>
+

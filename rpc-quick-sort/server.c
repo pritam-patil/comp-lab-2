@@ -11,7 +11,7 @@ int comp(const int *a,const int *b)
 Array *sort_1(Array *input,CLIENT *c)
 {
 	int i,j,temp;
-	qsort(input->num,input->size,sizeof(int),(__compar_fn_t)comp);
+	qsort(input->num,input->size,sizeof(int),(__compar_fn_t)comp); //library function
 	return input;
 }
 

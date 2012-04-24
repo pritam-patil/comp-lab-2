@@ -1,0 +1,35 @@
+Concept:
+	1.RMI is object oriented RPC mechanism like CORBA(Common Object Request Broker Architecture).
+	2.It is used to call remote methods using an object oriented approach.
+	3.Server creates a remotely referentiable object and registers in the RMI registry.
+	4.When the client needs to call any remote method, it looks for a object in the RMI registry(Binds objects with Names).
+	5.When the object is found, a reference proxy is created and you can call any remote method using that reference object.
+	6.It is generally used for more complex applications than pure client-server applications
+===>7.See the .pdf file and also the link <http://www.eg.bucknell.edu/~cs379/DistributedSystems/rmi_tut.html> for more information on 		  RMI.
+
+How to run it ?
+
+step 1:
+	-- start the rmiregistry :
+	rmiregistry &
+	
+step 2:
+	-- compile all .java files <ATM.java, ATMClient.java, ATMServer.java>
+	javac ATM.java
+	javac ATMClient.java
+	java ATMServer.java
+
+step 3:
+	--Run the RMI server:
+	java ATMServer
+	
+step 4:
+	--Run the Client(in separate terminal)
+	java ATMClient
+	
+	
+	Note: <init> function initializes your balance<do it first> e.g. init 1000
+		  <withdraw> : get some money		e.g. withdraw 800
+		  <check-balance> : what is left ?  e.g. check-balance
+
+==================Enjoy The Transactions :)==================

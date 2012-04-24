@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="calc"
+ targetNamespace="urn:calc/calc.wsdl"
+ xmlns:tns="urn:calc/calc.wsdl"
+ xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+ xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ xmlns:ns="urn:calc"
+ xmlns:SOAP="http://schemas.xmlsoap.org/wsdl/soap/"
+ xmlns:MIME="http://schemas.xmlsoap.org/wsdl/mime/"
+ xmlns:DIME="http://schemas.xmlsoap.org/ws/2002/04/dime/wsdl/"
+ xmlns:WSDL="http://schemas.xmlsoap.org/wsdl/"
+ xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+<types>
+
+ <schema targetNamespace="urn:calc"
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:ns="urn:calc"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="unqualified"
+  attributeFormDefault="unqualified">
+  <import namespace="http://schemas.xmlsoap.org/soap/encoding/" schemaLocation="http://schemas.xmlsoap.org/soap/encoding/"/>
+  <!-- operation request element -->
+  <element name="add">
+   <complexType>
+    <sequence>
+     <element name="a" type="xsd:double" minOccurs="1" maxOccurs="1"/><!-- ns__add::a -->
+     <element name="b" type="xsd:double" minOccurs="1" maxOccurs="1"/><!-- ns__add::b -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="addResponse">
+   <complexType>
+    <sequence>
+     <element name="result" type="xsd:double" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__add::result -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="sub">
+   <complexType>
+    <sequence>
+     <element name="a" type="xsd:double" minOccurs="1" maxOccurs="1"/><!-- ns__sub::a -->
+     <element name="b" type="xsd:double" minOccurs="1" maxOccurs="1"/><!-- ns__sub::b -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="subResponse">
+   <complexType>
+    <sequence>
+     <element name="result" type="xsd:double" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__sub::result -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="mul">
+   <complexType>
+    <sequence>
+     <element name="a" type="xsd:double" minOccurs="1" maxOccurs="1"/><!-- ns__mul::a -->
+     <element name="b" type="xsd:double" minOccurs="1" maxOccurs="1"/><!-- ns__mul::b -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="mulResponse">
+   <complexType>
+    <sequence>
+     <element name="result" type="xsd:double" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__mul::result -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="div">
+   <complexType>
+    <sequence>
+     <element name="a" type="xsd:double" minOccurs="1" maxOccurs="1"/><!-- ns__div::a -->
+     <element name="b" type="xsd:double" minOccurs="1" maxOccurs="1"/><!-- ns__div::b -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="divResponse">
+   <complexType>
+    <sequence>
+     <element name="result" type="xsd:double" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__div::result -->
+    </sequence>
+   </complexType>
+  </element>
+ </schema>
+
+</types>
+
+<message name="addRequest">
+ <part name="parameters" element="ns:add"/><!-- ns__add::ns__add -->
+</message>
+
+<message name="addResponse">
+ <part name="parameters" element="ns:addResponse"/>
+</message>
+
+<message name="subRequest">
+ <part name="parameters" element="ns:sub"/><!-- ns__sub::ns__sub -->
+</message>
+
+<message name="subResponse">
+ <part name="parameters" element="ns:subResponse"/>
+</message>
+
+<message name="mulRequest">
+ <part name="parameters" element="ns:mul"/><!-- ns__mul::ns__mul -->
+</message>
+
+<message name="mulResponse">
+ <part name="parameters" element="ns:mulResponse"/>
+</message>
+
+<message name="divRequest">
+ <part name="parameters" element="ns:div"/><!-- ns__div::ns__div -->
+</message>
+
+<message name="divResponse">
+ <part name="parameters" element="ns:divResponse"/>
+</message>
+
+<portType name="calcPortType">
+ <operation name="add">
+  <documentation>Service definition of function ns__add</documentation>
+  <input message="tns:addRequest"/>
+  <output message="tns:addResponse"/>
+ </operation>
+ <operation name="sub">
+  <documentation>Service definition of function ns__sub</documentation>
+  <input message="tns:subRequest"/>
+  <output message="tns:subResponse"/>
+ </operation>
+ <operation name="mul">
+  <documentation>Service definition of function ns__mul</documentation>
+  <input message="tns:mulRequest"/>
+  <output message="tns:mulResponse"/>
+ </operation>
+ <operation name="div">
+  <documentation>Service definition of function ns__div</documentation>
+  <input message="tns:divRequest"/>
+  <output message="tns:divResponse"/>
+ </operation>
+</portType>
+
+<binding name="calc" type="tns:calcPortType">
+ <SOAP:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+ <operation name="add">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="sub">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="mul">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="div">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+</binding>
+
+<service name="calc">
+ <documentation>gSOAP 2.8.3 generated service definition</documentation>
+ <port name="calc" binding="tns:calc">
+  <SOAP:address location="localhost:8000"/>
+ </port>
+</service>
+
+</definitions>
