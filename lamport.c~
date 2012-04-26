@@ -1,0 +1,81 @@
+#include<pthread.h>
+#include<stdio.h>
+#include<stdlib.h>
+
+
+int cl1,cl2,cl3;
+int tid[3];
+pthread_mutex_t critical;
+int sender;
+
+void increment1(int *inc)
+{
+	cl1+=*inc;
+	printf("Comp1's clk at %d\n",cl1);
+}
+
+
+
+
+void clock1(int inc)
+{
+	int interval;
+	pthread_create(interval,NULL,&increment1,&inc);
+	while(1)
+	{
+		mutex_lock(&critical);
+		if(sender==2 && cl1<cl2)
+		{
+			printf("Comp 1 got message from 2 at %d, sync'ing comp1...\n",cl1);
+			printf("comp1 clock sync'd to %d\n",cl1=cl2+1);
+		}
+		sender=1;
+		printf("comp1 sends msg at %d\n", cl1);
+		mutext_unlock(&critical);
+	}
+	pthread_join(interval,NULL);
+}
+
+void increment2(int *inc)
+{
+	cl2+=*inc;
+	printf("Comp2's clk at %d\n",cl2);
+}
+
+
+
+
+void clock2(int inc)
+{
+	int interval;
+	pthread_create(interval,NULL,&increment2,&inc);
+	while(1)
+	{
+		mutex_lock(&critical);
+		if(sender==1 && cl2<cl1)
+		{
+			printf("Comp 2 got message from 1 at %d, sync'ing comp2...\n",cl2);
+			printf("comp1 clock sync'd to %d\n",cl2=cl1+1);
+		}
+		sender=2;
+		printf("comp2 sends msg at %d\n", cl2);
+		mutext_unlock(&critical);
+	}
+	pthread_join(interval,NULL);
+}
+
+
+
+int main(int argc,char *argv[])
+{
+	int inc[3];
+	cl1^=cl2^=cl3;
+	inc[0]=atoi(argv[0]);
+	inc[1]=atoi(argv[1]);
+	
+	pthread_create(tid[0],NULL,&clock1,inc[0]);
+	pthread_create(tid[1],NULL,&clock2,inc[1]);
+	
+	pthread_join(id[0],NULL);
+	pthread_join(id[1],NULL);
+}

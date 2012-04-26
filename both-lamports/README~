@@ -1,0 +1,56 @@
+============Lamport Algorithm for clock sync================
+
+Program <lamport.c> is a static version. 
+	--the increments are fixed--no input required--threads are fixed(2)..i.e. processes are fixed
+	--run as : gcc lamport.c -lpthread
+				./a.out <clk1> <clk2>
+			as : ./a.out 4 2
+Program <lamportDynamic.c> is dynamic.  
+	--create any number of threads--you are the decider of increments--help yourself with the output below of dynamic version--
+	--So NO <Ctrl+C> <Ctrl+V>..(Sorry :D)..as in static version..
+	--Run as :
+		gcc lamportDynamic.c -lpthread
+		./a.out 3 4 1
+	--In output1, no sync'ing is required as processes are already sync'd.
+	--In output2, see the sync'ing below, since the clocks are unordered.
+
+Note: Your output may vary depending on the thread management by OS and the processor speed. So do not worry..:)
+
+=================output 1==========================
+pritam@pritam-laptop:~/comp-lab-2/lamport$ gcc lamportDynamic.c -lpthread
+pritam@pritam-laptop:~/comp-lab-2/lamport$ ./a.out 3 4 5
+Incrementing Processor 1's clk from [0 o'clock] to [3 o'clock]
+Incrementing Processor 3's clk from [0 o'clock] to [5 o'clock]
+Incrementing Processor 2's clk from [0 o'clock] to [4 o'clock]
+Now Processor 1 sends msg at [3 o'clock]
+Processor 2(at [4 o'clock]) got message from Processor 1(at [3 o'clock]),so no sync'ing required...
+Now Processor 2 sends msg at [4 o'clock]
+Processor 3(at [5 o'clock]) got message from Processor 2(at [3 o'clock]),so no sync'ing required...
+Now Processor 3 sends msg at [5 o'clock]
+Incrementing Processor 2's clk from [4 o'clock] to [8 o'clock]
+Incrementing Processor 3's clk from [3 o'clock] to [6 o'clock]
+Incrementing Processor 3's clk from [5 o'clock] to [10 o'clock]
+^C
+
+====================output 2=====================
+pritam@pritam-laptop:~/comp-lab-2/lamport$ ./a.out 3 4 1
+Incrementing Processor 3's clk from [0 o'clock] to [1 o'clock]
+Incrementing Processor 2's clk from [0 o'clock] to [4 o'clock]
+Incrementing Processor 1's clk from [0 o'clock] to [3 o'clock]
+Incrementing Processor 3's clk from [1 o'clock] to [2 o'clock]
+Incrementing Processor 1's clk from [3 o'clock] to [6 o'clock]
+Incrementing Processor 2's clk from [4 o'clock] to [8 o'clock]
+Processor 3(at [2 o'clock]) got message from Processor 1(at [6 o'clock]),so sync'ing Processor 3...
+Processor 3's clock sync'd to [7 o'clock]
+Now Processor 3 sends msg at [7 o'clock]
+Now Processor 3 sends msg at [6 o'clock]
+Processor 2(at [8 o'clock]) got message from Processor 3(at [6 o'clock]),so no sync'ing required...
+Now Processor 2 sends msg at [8 o'clock]
+Incrementing Processor 3's clk from [7 o'clock] Incrementing Processor 2's clk from [8 o'clock] to [12 o'clock]
+Incrementing Processor 2's clk from [6 o'clock] to [9 o'clock]
+to [8 o'clock]
+^C
+pritam@pritam-laptop:~/comp-lab-2/lamport$ 
+
+
+============Happy Multithreading :)=====================
