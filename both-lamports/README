@@ -43,12 +43,13 @@ Incrementing Processor 2's clk from [4 o'clock] to [8 o'clock]
 Processor 3(at [2 o'clock]) got message from Processor 1(at [6 o'clock]),so sync'ing Processor 3...
 Processor 3's clock sync'd to [7 o'clock]
 Now Processor 3 sends msg at [7 o'clock]
-Now Processor 3 sends msg at [6 o'clock]
-Processor 2(at [8 o'clock]) got message from Processor 3(at [6 o'clock]),so no sync'ing required...
+Now Processor 3 sends msg at [7 o'clock]
+Processor 2(at [8 o'clock]) got message from Processor 3(at [7 o'clock]),so no sync'ing required...
 Now Processor 2 sends msg at [8 o'clock]
-Incrementing Processor 3's clk from [7 o'clock] Incrementing Processor 2's clk from [8 o'clock] to [12 o'clock]
+Incrementing Processor 3's clk from [7 o'clock] to [8 o'clock]
+Incrementing Processor 2's clk from [8 o'clock] to [12 o'clock]
 Incrementing Processor 2's clk from [6 o'clock] to [9 o'clock]
-to [8 o'clock]
+
 ^C
 pritam@pritam-laptop:~/comp-lab-2/lamport$ 
 
