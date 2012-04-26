@@ -48,8 +48,10 @@ void *sync(void* processor)
 				printf("Processor %d(at [%d o'clock]) got message from Processor %d(at [%d o'clock]),so no sync'ing required...\n",current->id,current->clk,sender.id,sender.clk);
 			}
 		sender.id=current->id;	//make current processor as sender
-		pthread_mutex_unlock(&critical);	//remove lock
+		//print before unlocking---only one change to get all the o/p correct
 		printf("Now Processor %d sends msg at [%d o'clock]\n",current->id,current->clk);	//send message
+		pthread_mutex_unlock(&critical);	//remove lock
+		//printf("Now Processor %d sends msg at [%d o'clock]\n",current->id,current->clk);	//send message
 	}
 	pthread_join(interval,NULL);
 }
