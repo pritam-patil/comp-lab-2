@@ -3,9 +3,4 @@ Recently added:
 	2. web-services-calci
 	3. Search-file-using-RPC
 
-In the 'web-serives-calci', you may have compiled files using 'gcc' and found many errors(nd would have accused me :D 'He's program is not working.. :)'
-
-Try compiling using either 'g++' or 'c++' compiler.It will work for sure...
-
-
-======Keep 'Watch'ing...=================
+Note: For 'web-serives-calci', use 'g++' or 'c++' compiler instead of 'gcc' for correct behavior.
